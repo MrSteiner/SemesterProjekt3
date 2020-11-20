@@ -1,53 +1,64 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System;
 
-public class Atom : MonoBehaviour
+public class Atom
 {
-    public List<GameObject> Protons;
-    public List<GameObject> Neutrons;
-    public List<GameObject> Electrons;
-    
-    public float rotationTimer = 0.5f;
-    private float rotationCoords;
-    private Quaternion targetRotation;
+    public string atomName;
+    public int atomNumber;
+    public string symbol;
+    public string latinName;
+    public GameObject gameobject;
 
-    void Update()
+    public Atom(int atomNumber, string name, string Symbol, string latinname)
     {
-        if(rotationTimer <= Time.time)
-        {
-            rotationCoords = Random.Range(0f, 360f);
-            targetRotation = Quaternion.Euler(rotationCoords + transform.rotation.x, rotationCoords + transform.rotation.y, rotationCoords + transform.rotation.z);
-            rotationTimer = Time.time + 1f;
-        }
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 3f * Time.deltaTime);
+        this.atomNumber = atomNumber;
+        this.atomName = name;
+        this.symbol = Symbol;
+        this.latinName = latinname;
     }
 
-    void Start()
+    public static Atom Create(string atomName)
     {
-        AtomUpdate();
-    }
-
-    void AtomUpdate()
-    {
-        int children = transform.childCount;
-
-        for (int i = 0; i < children; ++i)
+        using (var reader = new StreamReader(@"Assets\Atomdex.csv"))
         {
-            GameObject particle = transform.GetChild(i).gameObject;
+            reader.ReadLine();
+            
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                string[] values = line.Split(',');
 
-            if (particle.GetComponent<Proton>())
-            {
-                Protons.Add(particle);
-            }
-            else if (particle.GetComponent<Neutron>())
-            {
-                Neutrons.Add(particle);
-            }
-            else if (particle.GetComponent<Electron>())
-            {
-                Electrons.Add(particle);
+                if(values[1].ToLower() == atomName.ToLower())
+                {
+                    return new Atom(int.Parse(values[0]), values[1], values[2], values[3]);
+                }
             }
         }
+
+        throw new ArgumentException("Ikkegyldigt atom");
+    }
+
+    public static Atom Create(int atomNumber)
+    {
+        using (var reader = new StreamReader(@"Assets\Atomdex.csv"))
+        {
+            reader.ReadLine();
+
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                string[] values = line.Split(',');
+
+                if (int.Parse(values[0]) == atomNumber)
+                {
+                    return new Atom(int.Parse(values[0]), values[1], values[2], values[3]);
+                }
+            }
+        }
+
+        throw new ArgumentException("Ikkegyldigt atom");
     }
 }
