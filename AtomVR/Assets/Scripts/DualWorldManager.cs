@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class DualWorldManager : MonoBehaviour
 {
+    private GameObject[] interactables;
     private bool eagleVisionActivated;
-    private Ray ray;
-    private RaycastHit hit;
-    private Color originalColor;
-    private int layerMask = 1 << 8;
 
     void Start()
     {
@@ -17,7 +14,7 @@ public class DualWorldManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        if (OVRInput.GetDown(OVRInput.Button.Two))
         {
             if (eagleVisionActivated == false)
                 ActivateVision();
@@ -28,25 +25,27 @@ public class DualWorldManager : MonoBehaviour
 
     void ActivateVision()
     {
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        Debug.Log("Works");
+        interactables = GameObject.FindGameObjectsWithTag("Represent");
+
+        foreach (GameObject gameobject in interactables)
         {
-            if (hit.collider.CompareTag("Represent"))
-            {
-                originalColor = hit.collider.gameObject.GetComponent<MeshRenderer>().material.color;
-                hit.collider.gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.green);
-            }
+            gameobject.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.green);
         }
+
+        eagleVisionActivated = true;
     }
 
     void DeactivateVision()
     {
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        Debug.Log("OFF");
+        interactables = GameObject.FindGameObjectsWithTag("Represent");
+
+        foreach (GameObject gameobject in interactables)
         {
-            if (hit.collider.CompareTag("Represent"))
-            {
-                originalColor = hit.collider.gameObject.GetComponent<MeshRenderer>().material.color;
-                hit.collider.gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", originalColor);
-            }
+            gameobject.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.grey);
         }
+
+        eagleVisionActivated = false;
     }
 }
