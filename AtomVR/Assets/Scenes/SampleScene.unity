@@ -1719,7 +1719,7 @@ Transform:
   m_GameObject: {fileID: 1922536105}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1742,6 +1742,26 @@ PrefabInstance:
       propertyPath: EnableMovementDuringReady
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 651472967974086704, guid: 4dd868fc266b9a94eb759da2d93dbc15,
+        type: 3}
+      propertyPath: UseCharacterCollisionData
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 651472967974086704, guid: 4dd868fc266b9a94eb759da2d93dbc15,
+        type: 3}
+      propertyPath: AimCollisionHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 651472967974086704, guid: 4dd868fc266b9a94eb759da2d93dbc15,
+        type: 3}
+      propertyPath: AimCollisionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 651472967974086704, guid: 4dd868fc266b9a94eb759da2d93dbc15,
+        type: 3}
+      propertyPath: TeleportDestinationLayer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 651472967974086705, guid: 4dd868fc266b9a94eb759da2d93dbc15,
         type: 3}
       propertyPath: LeftHand
@@ -1752,6 +1772,36 @@ PrefabInstance:
       propertyPath: RightHand
       value: 
       objectReference: {fileID: 394426353}
+    - target: {fileID: 651472967974086705, guid: 4dd868fc266b9a94eb759da2d93dbc15,
+        type: 3}
+      propertyPath: AimButton
+      value: 67108864
+      objectReference: {fileID: 0}
+    - target: {fileID: 651472967974086705, guid: 4dd868fc266b9a94eb759da2d93dbc15,
+        type: 3}
+      propertyPath: TeleportButton
+      value: 67108864
+      objectReference: {fileID: 0}
+    - target: {fileID: 651472967974086705, guid: 4dd868fc266b9a94eb759da2d93dbc15,
+        type: 3}
+      propertyPath: InputMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 651472967974086705, guid: 4dd868fc266b9a94eb759da2d93dbc15,
+        type: 3}
+      propertyPath: AimingController
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 651472967974086705, guid: 4dd868fc266b9a94eb759da2d93dbc15,
+        type: 3}
+      propertyPath: CapacitiveAimAndTeleportButton
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 651472967974086705, guid: 4dd868fc266b9a94eb759da2d93dbc15,
+        type: 3}
+      propertyPath: ThumbstickTeleportThreshold
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 651472967974086707, guid: 4dd868fc266b9a94eb759da2d93dbc15,
         type: 3}
       propertyPath: CameraRig

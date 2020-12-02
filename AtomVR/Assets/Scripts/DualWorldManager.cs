@@ -14,19 +14,20 @@ public class DualWorldManager : MonoBehaviour
 
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.Two))
+        if (OVRInput.GetDown(OVRInput.Button.Three))
         {
             if (eagleVisionActivated == false)
                 ActivateVision();
             else
                 DeactivateVision();
         }
+        //Debug.Log(eagleVisionActivated);
     }
 
     void ActivateVision()
     {
-        Debug.Log("Works");
-        interactables = GameObject.FindGameObjectsWithTag("Represent");
+        Debug.Log(interactables);
+        interactables = GameObject.FindGameObjectsWithTag("AtomRepresent");
 
         foreach (GameObject gameobject in interactables)
         {
@@ -39,7 +40,7 @@ public class DualWorldManager : MonoBehaviour
     void DeactivateVision()
     {
         Debug.Log("OFF");
-        interactables = GameObject.FindGameObjectsWithTag("Represent");
+        interactables = GameObject.FindGameObjectsWithTag("AtomRepresent");
 
         foreach (GameObject gameobject in interactables)
         {

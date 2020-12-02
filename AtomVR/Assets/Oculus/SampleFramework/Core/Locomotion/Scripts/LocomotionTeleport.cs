@@ -844,7 +844,7 @@ public class LocomotionTeleport : MonoBehaviour
 	{
 		var destTransform = _teleportDestination.OrientationIndicator;
 		Vector3 destPosition = destTransform.position;
-		destPosition.y += LocomotionController.CharacterController.height/2.0f;
+		destPosition.y += LocomotionController.CharacterController.height;
 
 		var character = LocomotionController.CharacterController;
 		var characterTransform = character.transform;
