@@ -28,44 +28,9 @@ public class AtomManager : MonoBehaviour
         if (OVRInput.GetDown(OVRInput.Button.One))
         {
             if (!atomWorld)
-            {
-                foreach (GameObject electron in Electrons)
-                {
-                    electron.SetActive(false);
-                }
-                foreach (GameObject neutron in Neutrons)
-                {
-                    neutron.SetActive(false);
-                }
-                foreach (GameObject proton in Protons)
-                {
-                    proton.SetActive(false);
-                }
-
-                atomRepresent.SetActive(true);
-
-                atomWorld = true;
-            }
-
-            if (atomWorld)
-            {
-                foreach (GameObject electron in Electrons)
-                {
-                    electron.SetActive(true);
-                }
-                foreach (GameObject neutron in Neutrons)
-                {
-                    neutron.SetActive(true);
-                }
-                foreach (GameObject proton in Protons)
-                {
-                    proton.SetActive(true);
-                }
-
-                atomRepresent.SetActive(false);
-
-                atomWorld = false;
-            }
+                WorldShift(true);
+            else
+                WorldShift(false);
 
         }
     }
@@ -102,5 +67,24 @@ public class AtomManager : MonoBehaviour
                 atomRepresent = particle;
             }
         }
+    }
+    void WorldShift(bool worldshift)
+    {
+        foreach (GameObject electron in Electrons)
+        {
+            electron.SetActive(worldshift);
+        }
+        foreach (GameObject neutron in Neutrons)
+        {
+            neutron.SetActive(worldshift);
+        }
+        foreach (GameObject proton in Protons)
+        {
+            proton.SetActive(worldshift);
+        }
+
+        atomRepresent.SetActive(!worldshift);
+
+        atomWorld = worldshift;
     }
 }
