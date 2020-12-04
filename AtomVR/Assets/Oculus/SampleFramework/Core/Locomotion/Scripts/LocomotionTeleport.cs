@@ -445,6 +445,10 @@ public class LocomotionTeleport : MonoBehaviour
 
 		CurrentState = States.Ready;
 		EnableMotion(EnableMovementDuringReady, EnableRotationDuringReady);
+		if(LocomotionController._Controller.enabled == false)
+		{
+			LocomotionController._Controller.enabled = true;
+		}
 
 		if (EnterStateReady != null)
 		{
@@ -541,6 +545,7 @@ public class LocomotionTeleport : MonoBehaviour
 			EnterStateAim();
 		}
 		_teleportDestination.gameObject.SetActive(true);
+		LocomotionController._Controller.enabled = false;
 
 		// Wait until the user is done aiming. The input system will turn this off when the button that triggered aiming is released.
 		while (CurrentIntention == TeleportIntentions.Aim) 
@@ -773,7 +778,7 @@ public class LocomotionTeleport : MonoBehaviour
 		var destTransform = _teleportDestination.OrientationIndicator;
 
 		Vector3 destPosition = destTransform.position;
-		destPosition.y += character.height * 0.5f;
+		destPosition.y += character.height + 1f;
 		Quaternion destRotation = _teleportDestination.LandingRotation;// destTransform.rotation;
 #if false
 		Quaternion destRotation = destTransform.rotation;

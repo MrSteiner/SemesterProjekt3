@@ -22,7 +22,7 @@ using UnityEngine.SceneManagement;
 public class LocomotionController : MonoBehaviour
 {
     public OVRCameraRig CameraRig;
-    //public CharacterController CharacterController;
+    public CharacterController _Controller;
     public CapsuleCollider CharacterController;
 	//public OVRPlayerController PlayerController;
 	public SimpleCapsuleWithStickMovement PlayerController;
