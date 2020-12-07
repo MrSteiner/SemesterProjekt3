@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Hide : MonoBehaviour
 {
     public Image image;
+    public GameObject LeftHand;
+    public Canvas canvas;
     public bool isOpen;
 
     void Start()
@@ -15,6 +17,7 @@ public class Hide : MonoBehaviour
     }
     void Update()
     {
+        canvas.transform.position = LeftHand.transform.position;
         if (OVRInput.GetDown(OVRInput.Button.Four))
         {
             if(isOpen == false)
