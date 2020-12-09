@@ -24,16 +24,6 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*RightHand = gameObject.GetComponent<GameObject>();
-        LeftHand = gameObject.GetComponent<GameObject>();
-        canvas = gameObject.GetComponent<Canvas>();
-        Movement = gameObject.GetComponent<Image>();
-        Teleport = gameObject.GetComponent<Image>();
-        Interact = gameObject.GetComponent<Image>();
-        Highlight = gameObject.GetComponent<Image>();
-        DualWorld = gameObject.GetComponent<Image>();
-        PeriodiskSystem = gameObject.GetComponent<Image>();*/
-
         Teleport.enabled = false;
         Interact.enabled = false;
         Highlight.enabled = false;
@@ -45,7 +35,7 @@ public class Tutorial : MonoBehaviour
         InteractCheck = false;
         HighlightCheck = false;
         DualWorldCheck = false;
-        //PeriodiskSystemCheck = false;
+        PeriodiskSystemCheck = false;
 
         Movement.enabled = true;
     }
@@ -128,7 +118,16 @@ public class Tutorial : MonoBehaviour
             InteractCheck = false;
             HighlightCheck = false;
             DualWorldCheck = false;
-            //PeriodiskSystemCheck = true;
+            PeriodiskSystemCheck = true;
+        }
+
+        if (PeriodiskSystemCheck == true)
+        {
+            Teleport.enabled = false;
+            Interact.enabled = false;
+            Highlight.enabled = false;
+            DualWorld.enabled = false;
+            PeriodiskSystem.enabled = false;
         }
     }
 }
