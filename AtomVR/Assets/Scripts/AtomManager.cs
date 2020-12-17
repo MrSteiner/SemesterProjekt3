@@ -38,7 +38,6 @@ public class AtomManager : MonoBehaviour
 
     void Start()
     {
-        atom = Atom.Create(2);
         atomWorld = false;
         AtomUpdate();
     }
@@ -70,7 +69,9 @@ public class AtomManager : MonoBehaviour
             }
         }
 
-        atomText.text = atom.atomName;
+        atom = Atom.Create(Protons.Count);
+
+        atomText.text = atom.atomNumber.ToString() + "." + atom.atomName + " (" + atom.symbol + ")";
     }
     void WorldShift(bool worldshift)
     {
