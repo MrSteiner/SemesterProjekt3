@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AtomManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class AtomManager : MonoBehaviour
     public Atom atom;
     public GameObject atomRepresent;
     public bool atomWorld;
+    public Text atomText;
 
     /*public float rotationTimer = 0.5f;
     private float rotationCoords;
@@ -31,7 +33,6 @@ public class AtomManager : MonoBehaviour
                 WorldShift(true);
             else
                 WorldShift(false);
-
         }
     }
 
@@ -44,6 +45,7 @@ public class AtomManager : MonoBehaviour
 
     void AtomUpdate()
     {
+        atomText = GameObject.Find("atomText").GetComponent<Text>();
         int children = transform.childCount;
 
         for (int i = 0; i < children; ++i)
@@ -67,6 +69,8 @@ public class AtomManager : MonoBehaviour
                 atomRepresent = particle;
             }
         }
+
+        atomText.text = atom.atomName;
     }
     void WorldShift(bool worldshift)
     {
