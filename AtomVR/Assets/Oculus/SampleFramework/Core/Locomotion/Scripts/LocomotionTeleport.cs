@@ -27,11 +27,12 @@ using Debug = UnityEngine.Debug;
 /// </summary>
 public class LocomotionTeleport : MonoBehaviour
 {
-	/// <summary>
-	/// The process of teleporting is represented by a simple state machine, and each of the 
-	/// possible states are represented by this enum.
-	/// </summary>
-	public enum States
+    public bool playerTeleport;
+    /// <summary>
+    /// The process of teleporting is represented by a simple state machine, and each of the 
+    /// possible states are represented by this enum.
+    /// </summary>
+    public enum States
 	{
 		Ready,
 		Aim,
@@ -857,6 +858,8 @@ public class LocomotionTeleport : MonoBehaviour
 		var lerpPosition = Vector3.Lerp(startPos, destPosition, positionPercent);
 
 		characterTransform.position = lerpPosition;
+
+        playerTeleport = true;
 
 		//LocomotionController.PlayerController.Teleported = true;
 	}

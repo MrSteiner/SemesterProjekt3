@@ -45,6 +45,8 @@ public class OVRGrabbable : MonoBehaviour
         get { return m_allowOffhandGrab; }
     }
 
+    public bool hasGrabbed;
+
 	/// <summary>
 	/// If true, the object is currently grabbed.
 	/// </summary>
@@ -117,6 +119,7 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        hasGrabbed = true;
     }
 
 	/// <summary>
@@ -151,6 +154,7 @@ public class OVRGrabbable : MonoBehaviour
     protected virtual void Start()
     {
         m_grabbedKinematic = GetComponent<Rigidbody>().isKinematic;
+        hasGrabbed = false;
     }
 
     void OnDestroy()

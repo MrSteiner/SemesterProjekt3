@@ -5,7 +5,7 @@ using UnityEngine;
 public class DualWorldManager : MonoBehaviour
 {
     private GameObject[] interactables;
-    private bool eagleVisionActivated;
+    public bool eagleVisionActivated;
 
     void Start()
     {
